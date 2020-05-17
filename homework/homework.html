@@ -12,15 +12,14 @@
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+
 
   <title>레몬인형 상세페이지</title>
   <style>
@@ -51,7 +50,7 @@
       text-align: center;
     }
   </style>
-  <script>
+  <script type="text/javascript">
     // 주문완료 안내
     function order() {
       if ($('#name').val() == '') {
@@ -77,12 +76,11 @@
         url: "https://api.manana.kr/exchange/rate.json",
         data: {},
         success: function (response) {
-          let exchangeRate = response[1]["rate"]
-          $('#exchange-rate').append(exchangeRate)
-        }
+              $('#exchange-rate').text(response[1]['rate']);
+              return;
+          }
       })
-    }
-
+    });
   </script>
 </head>
 
@@ -101,9 +99,10 @@
       <div>
         봄이 생각나는 노란색 옷을 입은 레몬 프렌즈, 머리 위 풀잎과 쏙 끌어안은 커다란 레몬이 포인트예요.
       </div>
-      <div id="exchange-rate">
-        <SPAN style="color:darkorange; font-weight: bold;">
-          달러-원 환율 :
+      <br>
+      <div>
+        <SPAN style="background:#ffc107; font-weight: bold;">
+          달러-원 환율 : <span id="exchange-rate"></span>
         </SPAN>
       </div>
       <hr>
