@@ -19,11 +19,12 @@
   <title>빵빵한 지도</title>
   <style type="text/css">
     .jumbotron {
-      height: 460px;
+      height: 300px;
       background-color: white;
       background-size: cover;
       font-family: 'Nanum Gothic', sans-serif;
       margin-bottom: 0px;
+      text-align: center;
     }
 
     .desc {
@@ -43,11 +44,10 @@
     }
 
     .lead {
-      margin-left: 7px;
       margin-bottom: 30px;
     }
 
-    .dropdown {
+    .btn-group {
       margin-left: 7px;
     }
   </style>
@@ -60,53 +60,32 @@
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
     crossorigin="anonymous"></script>
 
-  <!-- DB에서 데이터 받아오기 -->
   <script>
     $(document).ready(function () {
-      show_bakery();
+      initMap();
     });
 
-    function show_bakery() {
+    function initMap() {
+      var map = new google.maps.Map(
+        document.getElementById('map'), { zoom: 12, center: { lat: 37.5642135, lng: 127.0016985 }, })
+
+      //마커 표시
       $.ajax({
         type: 'GET',
-        url: '/api/list',
+        url: '/places',
         data: {},
         success: function (response) {
           if (response['result'] == 'success') {
-            let msg = response['msg'];
-            alert(msg);
+            let bakerys = response['bakerys_list']
+            for (let i = 0; i < bakerys.length; i++) {
+              var bakery = { lat: bakerys[i]['latitude'], lng: bakerys[i]['longitude'] }
+              var marker = new google.maps.Marker({ position: bakery, map: map, title: bakerys[i]['name'] });
+            }
           }
         }
       });
-    }
-  </script>
-  <script>
-    var map;
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 37.5642135, lng: 127.0016985 },
-        zoom: 2
-      });
 
-      // 여러개의 위치 데이터를 가져오는 json 파일.
-      var script = document.createElement('script');
-      // This example uses a local copy of the GeoJSON stored at
-      // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
-      script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
-      document.getElementsByTagName('head')[0].appendChild(script);
-    }
 
-    // 리스트 정보를 for문을 돌려 각각의 위치에 마커를 표시한다.
-    // set of coordinates.
-    window.eqfeed_callback = function (results) {
-      for (var i = 0; i < results.features.length; i++) {
-        var coords = results.features[i].geometry.coordinates;
-        var latLng = new google.maps.LatLng(coords[1], coords[0]); //위도 경도 변수
-        var marker = new google.maps.Marker({
-          position: latLng, //여기에 위도 경도 정보를 입력하고 마커 생성
-          map: map
-        });
-      }
     }
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvMd2zBN0j0fzFbGjyT6h2WNLu0-hjnw8&callback=initMap"
@@ -118,16 +97,14 @@
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <div class="desc">
-        <h2 class="display-4" style="font-weight:700">
-          지금 여러분은,
-          <br>
-          어떤 빵을 찾아 헤매고 있나요?</h2>
+        <h3 style="font-weight:700">
+          여러분은 어떤 빵을 찾아 헤매고 있나요?</h3>
         <br>
         <p class="lead">빵빵한 지도에게 물어보세요.
           <br>
           여러분에게 딱 맞는 베이커리를 추천해드려요!</p>
       </div>
-      <div class="dropdown">
+      <div class="btn-group dropright">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
           style="background-color: rgb(0, 55, 33); border-color: rgb(0, 55, 33);" aria-haspopup="true"
           aria-expanded="false">
