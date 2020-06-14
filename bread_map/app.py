@@ -12,7 +12,13 @@ def home():
 
 @app.route('/places', methods=['GET'])
 def bakery_list():  
-    bakerys = list(db.bakery.find({},{'_id':False}))
+    filter = request.args.get('filter')
+    filter_list = filter.split(',')
+    bakerys=[]
+    for category in filter_list:
+        bakery = list(db.bakery.find({category:True},{'_id':False}))
+        bakerys.extend(bakery)
+    # 리스트에 중복된 딕셔너리 제거하는 방법 찾아야 함
     return jsonify({'result': 'success','bakerys_list': bakerys})
 
 
