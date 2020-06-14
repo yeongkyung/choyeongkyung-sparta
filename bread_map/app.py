@@ -11,7 +11,7 @@ def home():
     return render_template('index.html')
 
 @app.route('/places', methods=['GET'])
-def bakery_list():
+def bakery_list():  
     bakerys = list(db.bakery.find({},{'_id':False}))
     return jsonify({'result': 'success','bakerys_list': bakerys})
 

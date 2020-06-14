@@ -19,7 +19,7 @@
   <title>빵빵한 지도</title>
   <style type="text/css">
     .jumbotron {
-      height: 300px;
+      height: 330px;
       background-color: white;
       background-size: cover;
       font-family: 'Nanum Gothic', sans-serif;
@@ -46,10 +46,6 @@
     .lead {
       margin-bottom: 30px;
     }
-
-    .btn-group {
-      margin-left: 7px;
-    }
   </style>
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -61,6 +57,8 @@
     crossorigin="anonymous"></script>
 
   <script>
+
+    //기본 지도
     $(document).ready(function () {
       initMap();
     });
@@ -68,11 +66,39 @@
     function initMap() {
       var map = new google.maps.Map(
         document.getElementById('map'), { zoom: 12, center: { lat: 37.5642135, lng: 127.0016985 }, })
+    }
 
-      //마커 표시
+    //필터 지도
+    function filteredMap() {
+      var map = new google.maps.Map(
+        document.getElementById('map'), { zoom: 12, center: { lat: 37.5642135, lng: 127.0016985 }, })
+      //체크박스 리스트 생성
+      var check_count = document.getElementsByName("category").length;
+      var check_box_list = []
+      for (let i = 0; i < check_count; i++) {
+        if (document.getElementsByName("category")[i].checked == true) {
+          check_box_list.push(document.getElementsByName("category")[i].value)
+        }
+      }
+      //카테고리 선택 여부 확인
+      if (check_box_list.length == 0) {
+        alert('원하는 카테고리를 선택해주세요.')
+        return
+      }
+      //하단으로 스크롤 이동
+      $('html, body').scrollTop($(document).height());
+      //url 생성
+      url = '/places?filter='
+      for (let i = 0; i < check_box_list.length; i++) {
+        if (i != 0) {
+          url = url + ',' + check_box_list[i];
+        } else {
+          url = url + check_box_list[i];
+        }
+      }
       $.ajax({
         type: 'GET',
-        url: '/places',
+        url: url,
         data: {},
         success: function (response) {
           if (response['result'] == 'success') {
@@ -84,8 +110,6 @@
           }
         }
       });
-
-
     }
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvMd2zBN0j0fzFbGjyT6h2WNLu0-hjnw8&callback=initMap"
@@ -104,19 +128,47 @@
           <br>
           여러분에게 딱 맞는 베이커리를 추천해드려요!</p>
       </div>
-      <div class="btn-group dropright">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          style="background-color: rgb(0, 55, 33); border-color: rgb(0, 55, 33);" aria-haspopup="true"
-          aria-expanded="false">
-          원하는 베이커리 선택하기
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">비건</a>
-          <a class="dropdown-item" href="#">글루텐프리</a>
-          <a class="dropdown-item" href="#">저탄수화물</a>
+      <div id="checkbox">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" name="category" type="checkbox" id="inlineCheckbox1" value="vegan">
+          <label class="form-check-label" for="inlineCheckbox1">비건</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" name="category" type="checkbox" id="inlineCheckbox2" value="glutenfree">
+          <label class="form-check-label" for="inlineCheckbox2">글루텐프리</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" name="category" type="checkbox" id="inlineCheckbox2" value="lowcarb">
+          <label class="form-check-label" for="inlineCheckbox2">저탄수화물</label>
+        </div>
+      </div>
+      <br>
+      <div>
+        <button class="btn btn-outline-primary" onclick="filteredMap()">베이커리 탐험하기</button>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
     </div>
+
   </div>
   <div id="map"></div>
 </body>
