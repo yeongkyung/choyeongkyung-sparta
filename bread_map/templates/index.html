@@ -16,21 +16,37 @@
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-  <title>빵빵한 지도</title>
+  <title>빵빵한 지도 :: 나를 위한 베이커리</title>
   <style type="text/css">
     .jumbotron {
-      height: 330px;
-      background-color: white;
+      height: 100%;
+      background-color: rgb(253, 253, 252);
       background-size: cover;
       font-family: 'Nanum Gothic', sans-serif;
       margin-bottom: 0px;
-      text-align: center;
+
+    }
+
+    .info {
+      height: 100%
+    }
+
+    .card-group {
+      vertical-align: middle;
     }
 
     .desc {
+      margin-top: 20px;
       color: rgb(31, 31, 31);
     }
 
+    #checkbox {
+      margin-left: 10px;
+    }
+
+    .btn {
+      margin-left: 10px;
+    }
 
     #map {
       height: 100%;
@@ -44,7 +60,8 @@
     }
 
     .lead {
-      margin-bottom: 30px;
+      margin-bottom: 20px;
+      margin-left: 10px;
     }
   </style>
 
@@ -106,13 +123,29 @@
             for (let i = 0; i < bakerys.length; i++) {
               var bakery = { lat: bakerys[i]['latitude'], lng: bakerys[i]['longitude'] }
               var marker = new google.maps.Marker({ position: bakery, map: map, title: bakerys[i]['name'] });
+              //인포 윈도우 생성
+              contentString = `<div>
+                              <h4>${bakerys[i]['name']}🍞</h4>
+                                  <hr>
+                                  <p>주소: ${bakerys[i]['address']}</p>
+                                  <p>영업시간: ${bakerys[i]['openinghours']}</p>
+                                  <p>연락처: ${bakerys[i]['contact']}</p>
+                                  <br>
+                                  <p><b>#${bakerys[i]['name']}</b></p>
+                              </div>`
+              marker.addListener('click', function () {
+                infowindow.open(map, marker);
+              });
+              var infowindow = new google.maps.InfoWindow({
+                content: contentString
+              });
             }
           }
         }
       });
     }
   </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvMd2zBN0j0fzFbGjyT6h2WNLu0-hjnw8&callback=initMap"
+  <script src="https://maps.googleapis.com/maps/api/js?key=APIKEY&callback=initMap"
     async defer></script>
 
 </head>
@@ -121,32 +154,45 @@
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <div class="desc">
-        <h3 style="font-weight:700">
-          여러분은 어떤 빵을 찾아 헤매고 있나요?</h3>
+        <h2 class="display-4" style="font-weight:700">
+          식단관리는 하지만
+          <br>빵은 먹고 싶어🍞🥐🥖🧡</h2>
+
         <br>
-        <p class="lead">빵빵한 지도에게 물어보세요.
+        <p class="lead">
+          여러분은 어떤 빵을 찾아 헤매고 있나요?
+          <br>
+          빵빵한 지도에게 물어보세요.
           <br>
           여러분에게 딱 맞는 베이커리를 추천해드려요!</p>
-      </div>
-      <div id="checkbox">
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" name="category" type="checkbox" id="inlineCheckbox1" value="vegan">
-          <label class="form-check-label" for="inlineCheckbox1">비건</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" name="category" type="checkbox" id="inlineCheckbox2" value="glutenfree">
-          <label class="form-check-label" for="inlineCheckbox2">글루텐프리</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" name="category" type="checkbox" id="inlineCheckbox2" value="lowcarb">
-          <label class="form-check-label" for="inlineCheckbox2">저탄수화물</label>
-        </div>
+        <hr>
       </div>
       <br>
-      <div>
-        <button class="btn btn-outline-primary" onclick="filteredMap()">베이커리 탐험하기</button>
+      <div id="category">
+        <p class="lead">원하는 베이커리를 선택해주세요.</p>
+
+        <div id="checkbox">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" name="category" type="checkbox" id="inlineCheckbox1" value="vegan">
+            <label class="form-check-label" for="inlineCheckbox1">비건</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" name="category" type="checkbox" id="inlineCheckbox2" value="glutenfree">
+            <label class="form-check-label" for="inlineCheckbox2">글루텐프리</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" name="category" type="checkbox" id="inlineCheckbox2" value="lowcarb">
+            <label class="form-check-label" for="inlineCheckbox2">저탄수화물</label>
+          </div>
+        </div>
+        <br>
+        <div>
+          <button class="btn btn-lg" onclick="filteredMap()" style="background-color: rgb(255, 136, 0);">베이커리
+            탐험하기</button>
+        </div>
       </div>
     </div>
+
 
     <!-- Modal -->
     <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -170,5 +216,6 @@
     </div>
 
   </div>
+
   <div id="map"></div>
 </body>
