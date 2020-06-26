@@ -63,6 +63,301 @@
       margin-bottom: 20px;
       margin-left: 10px;
     }
+
+    .badge {
+      margin-right: 5px;
+      padding: 7px;
+    }
+
+    .info {
+      padding: 10px;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+
+    /** BEGIN CSS **/
+    body {
+      background: white;
+    }
+
+    @keyframes rotate-loading {
+      0% {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+      }
+    }
+
+    @-moz-keyframes rotate-loading {
+      0% {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+      }
+    }
+
+    @-webkit-keyframes rotate-loading {
+      0% {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+      }
+    }
+
+    @-o-keyframes rotate-loading {
+      0% {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes rotate-loading {
+      0% {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+      }
+    }
+
+    @-moz-keyframes rotate-loading {
+      0% {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+      }
+    }
+
+    @-webkit-keyframes rotate-loading {
+      0% {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+      }
+    }
+
+    @-o-keyframes rotate-loading {
+      0% {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes loading-text-opacity {
+      0% {
+        opacity: 0
+      }
+
+      20% {
+        opacity: 0
+      }
+
+      50% {
+        opacity: 1
+      }
+
+      100% {
+        opacity: 0
+      }
+    }
+
+    @-moz-keyframes loading-text-opacity {
+      0% {
+        opacity: 0
+      }
+
+      20% {
+        opacity: 0
+      }
+
+      50% {
+        opacity: 1
+      }
+
+      100% {
+        opacity: 0
+      }
+    }
+
+    @-webkit-keyframes loading-text-opacity {
+      0% {
+        opacity: 0
+      }
+
+      20% {
+        opacity: 0
+      }
+
+      50% {
+        opacity: 1
+      }
+
+      100% {
+        opacity: 0
+      }
+    }
+
+    @-o-keyframes loading-text-opacity {
+      0% {
+        opacity: 0
+      }
+
+      20% {
+        opacity: 0
+      }
+
+      50% {
+        opacity: 1
+      }
+
+      100% {
+        opacity: 0
+      }
+    }
+
+    .loading-container,
+    .loading {
+      height: 100px;
+      position: relative;
+      width: 100px;
+      border-radius: 100%;
+    }
+
+
+    .loading-container {
+      margin: 40px auto
+    }
+
+    .loading {
+      border: 2px solid transparent;
+      border-color: transparent rgb(255, 136, 0) transparent rgb(255, 136, 0);
+      -moz-animation: rotate-loading 1.5s linear 0s infinite normal;
+      -moz-transform-origin: 50% 50%;
+      -o-animation: rotate-loading 1.5s linear 0s infinite normal;
+      -o-transform-origin: 50% 50%;
+      -webkit-animation: rotate-loading 1.5s linear 0s infinite normal;
+      -webkit-transform-origin: 50% 50%;
+      animation: rotate-loading 1.5s linear 0s infinite normal;
+      transform-origin: 50% 50%;
+    }
+
+    .loading-container:hover .loading {
+      border-color: transparent rgb(255, 136, 0) transparent rgb(255, 136, 0);
+    }
+
+    .loading-container:hover .loading,
+    .loading-container .loading {
+      -webkit-transition: all 0.5s ease-in-out;
+      -moz-transition: all 0.5s ease-in-out;
+      -ms-transition: all 0.5s ease-in-out;
+      -o-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out;
+    }
+
+    #loading-text {
+      -moz-animation: loading-text-opacity 2s linear 0s infinite normal;
+      -o-animation: loading-text-opacity 2s linear 0s infinite normal;
+      -webkit-animation: loading-text-opacity 2s linear 0s infinite normal;
+      animation: loading-text-opacity 2s linear 0s infinite normal;
+      color: rgb(255, 136, 0);
+      font-family: "Helvetica Neue, "Helvetica", ""arial";
+      font-size: 10px;
+      font-weight: bold;
+      margin-top: 45px;
+      opacity: 0;
+      position: absolute;
+      text-align: center;
+      text-transform: uppercase;
+      top: 0;
+      width: 100px;
+    }
+
+    
   </style>
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -74,21 +369,22 @@
     crossorigin="anonymous"></script>
 
   <script>
+    //새로고침 상단이동
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    }
 
-    //기본 지도
-    $(document).ready(function () {
-      initMap();
-    });
-
+    //초기 지도
     function initMap() {
       var map = new google.maps.Map(
-        document.getElementById('map'), { zoom: 12, center: { lat: 37.5642135, lng: 127.0016985 }, })
+        document.getElementById('map'), { zoom: 12, center: { lat: 37.5642, lng: 127.0016985 }, })
     }
+
 
     //필터 지도
     function filteredMap() {
       var map = new google.maps.Map(
-        document.getElementById('map'), { zoom: 12, center: { lat: 37.5642135, lng: 127.0016985 }, })
+        document.getElementById('map'), { zoom: 12, center: { lat: 37.5642, lng: 127.0016985 }, })
       //체크박스 리스트 생성
       var check_count = document.getElementsByName("category").length;
       var check_box_list = []
@@ -119,44 +415,124 @@
         data: {},
         success: function (response) {
           if (response['result'] == 'success') {
-            let bakerys = response['bakerys_list']
+            let bakerys = response['bakerys_list'];
+            let markerList = [];
+            let infoWindowList = [];
+            let titleList = [];
             for (let i = 0; i < bakerys.length; i++) {
               var bakery = { lat: bakerys[i]['latitude'], lng: bakerys[i]['longitude'] }
               var marker = new google.maps.Marker({ position: bakery, map: map, title: bakerys[i]['name'] });
               //인포 윈도우 생성
-              contentString = `<div>
-                              <h4>${bakerys[i]['name']}🍞</h4>
+              if (bakerys[i]['openinghours'] == '') { openinghours = '정보 없음' }
+              else { openinghours = bakerys[i]['openinghours'] }
+              if (bakerys[i]['contact'] == '') { contact = '정보 없음' }
+              else { contact = bakerys[i]['contact'] }
+              if (bakerys[i]['vegan'] == true) { vegan_badge = '<span class="badge badge-success">비건</span>' }
+              else { vegan_badge = '' }
+              if (bakerys[i]['glutenfree'] == true) { glutenfree_badge = '<span class="badge badge-warning">글루텐프리</span>' }
+              else { glutenfree_badge = '' }
+              if (bakerys[i]['lowcarb'] == true) { lowcarb_badge = '<span class="badge badge-primary">저탄수</span>' }
+              else { lowcarb_badge = '' }
+              //아이콘
+              clock_icon = `<svg class="bi bi-clock" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z" />
+                <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z" />
+                </svg>`
+              address_icon = `<svg class="bi bi-geo-alt" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                </svg>`
+              contact_icon = `<svg class="bi bi-chat-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2.5a2 2 0 0 1 1.6.8L8 14.333 9.9 11.8a2 2 0 0 1 1.6-.8H14a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                </svg>`
+              let contentString = `<div class="info">
+                                  <h4>${bakerys[i]['name']}🍞</h4>
                                   <hr>
-                                  <p>주소: ${bakerys[i]['address']}</p>
-                                  <p>영업시간: ${bakerys[i]['openinghours']}</p>
-                                  <p>연락처: ${bakerys[i]['contact']}</p>
+                                  <p>${vegan_badge + glutenfree_badge + lowcarb_badge}</p>
+                                  <p>${address_icon} ${bakerys[i]['address']}</p>
+                                  <p>${clock_icon} ${openinghours}</p>
+                                  <p>${contact_icon} ${contact}</p>
                                   <br>
-                                  <p><b>#${bakerys[i]['name']}</b></p>
-                              </div>`
-              marker.addListener('click', function () {
-                infowindow.open(map, marker);
-              });
+                                  <p id="instagram_image${i}"><h6>#${bakerys[i]['name']}</h6></p>
+                                  <div id="insta-image-wrapper-${i}">  
+                                    <div class="loading-container">
+                                    <div class="loading"></div>
+                                    <div id="loading-text">인스타 해시태그<br>조회중</div>
+                                    </div></div>
+                                 </div>`
               var infowindow = new google.maps.InfoWindow({
                 content: contentString
               });
+              let titlename = bakerys[i]['name']
+              markerList.push(marker);
+              infoWindowList.push(infowindow);
+              titleList.push(titlename);
+            }
+            for (let i = 0; i < markerList.length; i++) {
+              markerList[i].addListener('click', function () {
+                infoWindowList[i].open(map, markerList[i]);
+                getInstaImages(i);
+              });
+              // 인스타 이미지 API 호출
+              function getInstaImages(i) {
+                $.ajax({
+                  type: 'GET',
+                  url: '/reviews?filter=' + titleList[i],
+                  data: {},
+                  success: function (response) {
+                    if (response['result'] == 'success') {
+                      let images = response['image_list'];
+
+                      image_tag =
+                        `<div class="card-group"> 
+                                    <div class="card"><img src=${images[0]}></div>
+                                    <div class="card"><img src=${images[1]}></div>
+                                    <div class="card"><img src=${images[2]}></div>
+                                  </div>`
+                      $(`#insta-image-wrapper-${i}`).empty()
+                      $(`#insta-image-wrapper-${i}`).append(image_tag)
+                    }
+                  }
+                })
+              }
             }
           }
         }
       });
+
     }
+
+
   </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=APIKEY&callback=initMap"
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvMd2zBN0j0fzFbGjyT6h2WNLu0-hjnw8&callback=initMap"
     async defer></script>
 
 </head>
 
 <body>
-  <div class="jumbotron jumbotron-fluid">
+  <nav class="navbar  navbar-expand-lg navbar-light" style="background-color: rgb(255, 136, 0);">
+    <a class="navbar-brand" href="/"><b>빵빵한 지도 🍞🥐🥖</b></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">홈 <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/report">제보하기</a>
+      </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="jumbotron jumbotron-fluid" style="background-color:white">
     <div class="container">
       <div class="desc">
         <h2 class="display-4" style="font-weight:700">
           식단관리는 하지만
-          <br>빵은 먹고 싶어🍞🥐🥖🧡</h2>
+          <br>빵은 먹고 싶어</h2>
 
         <br>
         <p class="lead">
@@ -169,7 +545,7 @@
       </div>
       <br>
       <div id="category">
-        <p class="lead">원하는 베이커리를 선택해주세요.</p>
+        <p class="lead">원하는 베이커리를 선택해주세요. (중복선택 가능)</p>
 
         <div id="checkbox">
           <div class="form-check form-check-inline">
@@ -181,8 +557,8 @@
             <label class="form-check-label" for="inlineCheckbox2">글루텐프리</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" name="category" type="checkbox" id="inlineCheckbox2" value="lowcarb">
-            <label class="form-check-label" for="inlineCheckbox2">저탄수화물</label>
+            <input class="form-check-input" name="category" type="checkbox" id="inlineCheckbox3" value="lowcarb">
+            <label class="form-check-label" for="inlineCheckbox3">저탄수화물</label>
           </div>
         </div>
         <br>
@@ -193,29 +569,10 @@
       </div>
     </div>
 
-
-    <!-- Modal -->
-    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 
   <div id="map"></div>
+
+  <div id="searchedmap"></div>
+
 </body>
